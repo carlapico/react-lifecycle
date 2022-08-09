@@ -22,11 +22,11 @@ function Beers() {
         <>
             <button onClick ={() => setBeerType('ale')}>Ale</button>
             <button onClick ={() => setBeerType('stouts')}>Stouts</button>
-            <ul>
+            <section id="beerList">
                 {beerList.map (beer => (
                      <BeerCard key={beer.id} beer={beer} />
                 ))}
-            </ul>
+            </section>
         </>
     )
 }
