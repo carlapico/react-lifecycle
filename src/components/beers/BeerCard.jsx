@@ -2,9 +2,11 @@ import "./beercard.css"
 
 function BeerCard ({ beer }) {
     return (
-        <li>
-            {beer.name}
-        </li>
+        <div className="beerCard">
+            <img src={beer.image} alt="" />
+            <h2> {beer.name} </h2>
+            <p> {beer.price} </p>
+        </div>
     )
 }
 
