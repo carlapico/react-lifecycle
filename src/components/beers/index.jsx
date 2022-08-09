@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BeerCard from './BeerCard';
 
 function Beers() {
     const [beerList, setBeerList] = useState ();
@@ -22,11 +23,9 @@ function Beers() {
             <button onClick ={() => setBeerType('ale')}>Ale</button>
             <button onClick ={() => setBeerType('stouts')}>Stouts</button>
             <ul>
-                {beerList.map (beer => 
-                    <li key= {beer.id}>
-                        {beer.name}
-                    </li>
-                )}
+                {beerList.map (beer => (
+                     <BeerCard key={beer.id} beer={beer} />
+                ))}
             </ul>
         </>
     )
