@@ -5,7 +5,7 @@ function Beers() {
     const [beerType, setBeerType] = useState ('ale')
 
     useEffect(() => {
-        fetch(`https://api.sampleapis.com/beers/${beerType}`) //ale, stouts, red-ale
+        fetch(`https://api.sampleapis.com/beers/${beerType}`) //ale, stouts
         .then(response => response.json()) 
         .then(beers => setBeerList(beers))
         .catch(alert)
@@ -13,7 +13,7 @@ function Beers() {
 
     if (!beerList) {
         return (
-            <h2>Loading...</h2>
+            <h2>Loading...</h2> //rendering before the useEffects // we always have to handle the loading first always or else the app will break
         )
     }
 
