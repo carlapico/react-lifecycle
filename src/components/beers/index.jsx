@@ -1,14 +1,15 @@
-import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
 import React, { useEffect, useState } from 'react';
 
 function Beers() {
     const [beerList, setBeerList] = useState ();
+    const [beerType, setBeerType] = useState ('ale')
+
     useEffect(() => {
-        fetch(`https://api.sampleapis.com/beers/ale`) //ale, stouts, red-ale
+        fetch(`https://api.sampleapis.com/beers/${beerType}`) //ale, stouts, red-ale
         .then(response => response.json()) 
         .then(beers => setBeerList(beers))
         .catch(alert)
-    },[])
+    },[beerType])
 
     if (!beerList) {
         return (
@@ -18,12 +19,14 @@ function Beers() {
 
     return (
         <>
+            <button onClick ={() => setBeerType('ale')}>Ale</button>
+            <button onClick ={() => setBeerType('stouts')}>Stouts</button>
             <ul>
-                {beerList.map (beer => {
+                {beerList.map (beer => 
                     <li key= {beer.id}>
                         {beer.name}
                     </li>
-                })}
+                )}
             </ul>
         </>
     )
